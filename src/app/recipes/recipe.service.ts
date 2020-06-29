@@ -1,23 +1,47 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe(
-      'A Test Recipe',
-      'This is a test',
-      'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'
+      'Delicious Hot Dog',
+      'You have to try it!',
+      'https://live.staticflickr.com/4899/32770365848_8f84af509c_b.jpg',
+      [
+        new Ingredient('Buns', 1),
+        new Ingredient('Sausage', 1),
+        new Ingredient('Mustard', 1),
+      ]
     ),
     new Recipe(
-      'Another Test Recipe',
-      'This is a test',
-      'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'
+      'Tasty Burger',
+      'The best burger on the planet!',
+      'https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_960_720.jpg',
+      [
+        new Ingredient('Buns', 2),
+        new Ingredient('Beef', 1),
+        new Ingredient('Cheese', 1),
+        new Ingredient('Tomato', 2),
+        new Ingredient('Pickles', 3),
+        new Ingredient('Onion', 1),
+        new Ingredient('Mayonnaise', 1),
+        new Ingredient('Lettuce', 1),
+      ]
     ),
   ];
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients);
   }
 }
