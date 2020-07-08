@@ -28,10 +28,16 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+          <button
+            style="margin-right: 5px;"
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid"
+          >
             {{ editMode ? "Update" : "Add" }}
           </button>
           <button
+            style="margin-right: 5px;"
             *ngIf="editMode"
             class="btn btn-danger"
             type="button"
@@ -39,7 +45,12 @@
           >
             Delete
           </button>
-          <button class="btn btn-primary" type="button" (click)="onClear()">
+          <button
+            style="margin-right: 5px;"
+            class="btn btn-primary"
+            type="button"
+            (click)="onClear()"
+          >
             Clear
           </button>
         </div>
