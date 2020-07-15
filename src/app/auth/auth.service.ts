@@ -4,7 +4,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject, BehaviorSubject } from 'rxjs';
 import { User } from './user.module';
 import { Router } from '@angular/router';
-import { clear } from 'console';
 
 export interface AuthResponseData {
   kind: string;
@@ -94,7 +93,6 @@ export class AuthService {
   }
 
   autoLogout(expirationDuration: number) {
-    console.log(expirationDuration);
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
