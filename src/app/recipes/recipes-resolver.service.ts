@@ -5,8 +5,6 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Recipe } from './recipe.model';
-import { DataStorageService } from '../shared/data-storage.service';
-import { RecipeService } from './recipe.service';
 import { Store } from '@ngrx/store';
 import * as fromAppReducer from '../store/app.reducer';
 import * as RecipesActions from '../recipes/store/recipe.actions';
